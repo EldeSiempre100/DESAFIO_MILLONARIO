@@ -1,0 +1,414 @@
+/* Fase 2 — Lobby/enrolamiento V3 sobre el chasis web V4.
+   Alcance deliberadamente limitado a la sala abierta. */
+
+.host-body {
+  background:
+    linear-gradient(rgba(2, 7, 28, .72), rgba(2, 7, 28, .86)),
+    url("/media/images/game_background_v3_clean.png") center / cover fixed no-repeat;
+}
+
+.host-page-shell {
+  width: min(1320px, calc(100% - 28px));
+  padding-top: 18px;
+}
+
+.host-topbar {
+  margin-bottom: 18px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255,255,255,.11);
+  border-radius: 16px;
+  background: rgba(4, 9, 39, .62);
+  backdrop-filter: blur(10px);
+}
+
+.host-layout.lobby-layout {
+  grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.classic-room-panel {
+  position: sticky;
+  top: 18px;
+  align-self: start;
+  min-height: 690px;
+  padding: 24px 22px;
+  text-align: center;
+  border: 2px solid rgba(239, 239, 255, .78);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(18, 31, 112, .88), rgba(6, 13, 60, .93));
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.08),
+    0 22px 60px rgba(0,0,0,.34);
+}
+
+.classic-room-panel .room-label {
+  color: #f0f2ff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .15em;
+}
+
+.classic-room-panel .room-code {
+  margin: 8px 0 16px;
+  color: #f5c949;
+  font-size: clamp(34px, 4vw, 44px);
+  text-shadow: 0 0 18px rgba(245,201,73,.22);
+}
+
+.classic-qr-frame {
+  width: min(224px, 82%);
+  margin-bottom: 14px;
+  padding: 10px;
+  border: 3px solid rgba(255,255,255,.88);
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.28);
+}
+
+.connected-counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 18px 0 16px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 14px;
+  background: rgba(2, 8, 39, .48);
+  text-align: left;
+}
+
+.connected-counter > span {
+  color: #d9ddf5;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.connected-counter strong {
+  color: white;
+  font-size: 25px;
+  font-variant-numeric: tabular-nums;
+}
+
+.connected-counter small {
+  color: #aeb5dc;
+  font-size: 13px;
+}
+
+.question-count-selector {
+  min-width: 0;
+  margin: 0 0 16px;
+  padding: 14px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 14px;
+  background: rgba(4, 10, 45, .44);
+}
+
+.question-count-selector legend {
+  padding: 0 7px;
+  color: #dfe3f7;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.question-count-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.question-count-option {
+  min-height: 42px;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 11px;
+  color: #eff1ff;
+  font-weight: 850;
+  background: rgba(25, 41, 126, .7);
+}
+
+.question-count-option.selected {
+  color: #081130;
+  border-color: #f5c949;
+  background: linear-gradient(180deg, #ffe47e, #efbc36);
+  box-shadow: 0 7px 18px rgba(239,188,54,.18);
+}
+
+.question-count-option:disabled {
+  opacity: .34;
+  cursor: not-allowed;
+}
+
+.question-count-selector small {
+  display: block;
+  margin-top: 9px;
+  color: #9ca4ca;
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.classic-start-button {
+  width: 100%;
+  min-height: 60px;
+  padding: 10px 14px;
+  border: 2px solid rgba(255,255,255,.72);
+  border-radius: 16px;
+  color: white;
+  font-size: 14px;
+  font-weight: 850;
+  line-height: 1.25;
+  cursor: pointer;
+  background: linear-gradient(180deg, #1b42c4, #10226f);
+  box-shadow: 0 10px 28px rgba(0,0,0,.25);
+  transition: transform .16s ease, filter .16s ease, opacity .16s ease;
+}
+
+.classic-start-button:not(:disabled):hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.classic-start-button:disabled {
+  opacity: .42;
+  cursor: not-allowed;
+}
+
+.room-message {
+  min-height: 34px;
+  margin: 12px 4px 0;
+  color: #bfc5e7;
+  text-align: left;
+}
+
+.host-error-banner {
+  margin: 0;
+  padding: 0 6px;
+}
+
+.host-layout.lobby-layout .host-main {
+  min-width: 0;
+  display: block;
+}
+
+.host-layout.lobby-layout .lobby-participants-stage {
+  position: relative;
+  min-height: 690px;
+  padding: 26px 28px 30px;
+  overflow: hidden;
+  border: 2px solid rgba(239,239,255,.7);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(41, 72, 190, .32), transparent 42%),
+    linear-gradient(180deg, rgba(13, 24, 88, .84), rgba(5, 11, 49, .93));
+  box-shadow: 0 22px 60px rgba(0,0,0,.34);
+  backdrop-filter: none;
+}
+
+.host-layout.lobby-layout .lobby-participants-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .28;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 38px 38px;
+  mask-image: linear-gradient(to bottom, black, transparent 92%);
+}
+
+.host-layout.lobby-layout .participants-stage-heading,
+.host-layout.lobby-layout .lobby-participants-stage .participant-list {
+  position: relative;
+  z-index: 1;
+}
+
+.host-layout.lobby-layout .participants-stage-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}
+
+.host-layout.lobby-layout .participants-stage-heading .eyebrow {
+  margin-bottom: 5px;
+  color: #f5c949;
+}
+
+.host-layout.lobby-layout .participants-stage-heading h2 {
+  margin: 0;
+  font-size: clamp(24px, 3vw, 34px);
+}
+
+.host-layout.lobby-layout .participants-stage-note {
+  max-width: 360px;
+  margin: 0;
+  color: #aeb5d4;
+  font-size: 12px;
+  line-height: 1.45;
+  text-align: right;
+}
+
+.lobby-focus .participant-list {
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  gap: 10px;
+  align-content: start;
+}
+
+.lobby-focus .participant {
+  min-height: 58px;
+  padding: 9px 11px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(29, 53, 149, .68), rgba(11, 22, 78, .78));
+}
+
+.lobby-focus .participant-avatar {
+  font-size: 24px;
+}
+
+.lobby-focus .participant-name {
+  font-size: 13px;
+  font-weight: 720;
+}
+
+.lobby-focus .participants-empty {
+  grid-column: 1 / -1;
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  text-align: center;
+}
+
+/* Una vez que comienza la clasificatoria, Fase 2 deja el layout anterior
+   disponible hasta que las siguientes fases reconstruyan esas escenas. */
+.host-layout.game-in-progress {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.host-layout.game-in-progress .participants-stage-heading .participants-stage-note {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .host-layout.lobby-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .classic-room-panel {
+    position: static;
+    min-height: auto;
+  }
+
+  .classic-qr-frame {
+    width: min(190px, 60vw);
+  }
+
+  .host-layout.lobby-layout .lobby-participants-stage {
+    min-height: 470px;
+  }
+
+  .host-layout.lobby-layout .participants-stage-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .host-layout.lobby-layout .participants-stage-note {
+    text-align: left;
+  }
+}
+
+@media (max-height: 820px) and (min-width: 901px) {
+  .host-page-shell {
+    padding-top: 12px;
+  }
+
+  .host-topbar {
+    margin-bottom: 12px;
+  }
+
+  .classic-room-panel,
+  .host-layout.lobby-layout .lobby-participants-stage {
+    min-height: calc(100vh - 116px);
+  }
+
+  .classic-room-panel {
+    padding: 18px;
+  }
+
+  .classic-room-panel .room-code {
+    margin: 4px 0 10px;
+    font-size: clamp(32px, 3.5vw, 40px);
+  }
+
+  .classic-qr-frame {
+    width: min(176px, 72%);
+    margin-bottom: 10px;
+  }
+
+  .connected-counter {
+    margin: 12px 0;
+    padding: 10px 12px;
+  }
+
+  .question-count-selector {
+    margin-bottom: 12px;
+    padding: 10px 12px;
+  }
+
+  .classic-start-button {
+    min-height: 56px;
+  }
+
+  .room-message {
+    min-height: 30px;
+    margin-top: 10px;
+    font-size: 11px;
+  }
+
+  .host-layout.lobby-layout .lobby-participants-stage {
+    padding: 22px 28px 24px;
+  }
+
+  .host-layout.lobby-layout .participants-stage-heading {
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+  }
+}
+
+@media (max-width: 560px) {
+  .host-page-shell {
+    width: min(100% - 16px, 1320px);
+  }
+
+  .host-topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .topbar-actions {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .topbar-actions .button {
+    flex: 1 1 auto;
+  }
+
+  .classic-room-panel,
+  .host-layout.lobby-layout .lobby-participants-stage {
+    border-radius: 16px;
+  }
+
+  .lobby-focus .participant-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
