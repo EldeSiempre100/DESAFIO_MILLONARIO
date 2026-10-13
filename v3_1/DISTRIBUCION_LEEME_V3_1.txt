@@ -1,0 +1,22 @@
+MILLONARIO EDUCATIVO — V3.1.4 PARTICIPATIVA
+
+1. Mantenga todos los archivos dentro de esta carpeta.
+2. Conecte el laptop y los teléfonos a la misma red Wi-Fi privada.
+3. Abra MillonarioEducativoV3_1.exe.
+4. Pulse Crear sala participativa.
+5. Si Windows Firewall pregunta, habilite solamente Redes privadas.
+6. Los participantes escanean el QR e ingresan un alias. La dirección no
+   requiere escribir ni identificar el código de sala.
+7. Cierre la aplicación antes de retirar el pendrive.
+
+La experiencia requiere exactamente 12 preguntas activas: una clasificatoria,
+cinco para cada participante y una de reserva. El editor manual y la plantilla
+Excel permanecen disponibles desde el menú.
+
+No copie solamente el EXE: necesita las bibliotecas, recursos, cliente móvil y
+plantillas que lo acompañan.
+
+La sala funciona sin Internet. El router debe permitir comunicación directa
+entre los dispositivos y no debe tener activado el aislamiento de clientes.
+
+Aplicación destinada a uso privado y educativo.

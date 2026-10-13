@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "millonario-educativo-v3"
+version = "3.1.4"
+description = "Juego audiovisual participativo con sala local y pulsadores móviles"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+    "PySide6>=6.8,<7",
+    "fastapi>=0.116,<1",
+    "uvicorn>=0.35,<1",
+    "websockets>=15,<17",
+    "segno>=1.6,<2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "httpx>=0.28,<1",
+    "pytest>=8,<10",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#070824">
+  <title>Pulsador interactivo</title>
+  <link rel="stylesheet" href="/mobile/app.css?v=3.1.4">
+</head>
+<body>
+  <main class="shell">
+    <header class="brand">
+      <div class="brand__ring" aria-hidden="true">↯</div>
+      <div>
+        <p class="eyebrow">SALA PARTICIPATIVA</p>
+        <h1>Pulsador interactivo</h1>
+      </div>
+      <span id="networkDot" class="network network--offline" title="Estado de red"></span>
+    </header>
+
+    <section id="joinView" class="card">
+      <p class="step">Sala <strong id="roomCode">----</strong></p>
+      <h2>Prepara tu pulsador</h2>
+      <p class="muted">Elige un avatar e ingresa un alias breve para identificarte.</p>
+      <form id="joinForm" autocomplete="off">
+        <fieldset class="avatar-fieldset">
+          <legend>Elige tu avatar</legend>
+          <div id="avatarGrid" class="avatar-grid" role="radiogroup"
+               aria-label="Avatares disponibles"></div>
+        </fieldset>
+        <label for="alias">Tu alias</label>
+        <input id="alias" name="alias" maxlength="24" minlength="2"
+               autocomplete="nickname" placeholder="Ej.: Camila" required>
+        <button class="primary" type="submit">Ingresar a la sala</button>
+      </form>
+      <p id="joinError" class="error" role="alert"></p>
+    </section>
+
+    <section id="statusView" class="card hidden" aria-live="polite">
+      <div class="identity">
+        <div class="identity__person">
+          <span id="myAvatar" class="identity__avatar" aria-hidden="true">●</span>
+          <strong id="myAlias"></strong>
+        </div>
+        <span id="statusBadge" class="badge">Conectando</span>
+      </div>
+      <div class="waiting-mark" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <h2 id="statusTitle">Estás dentro</h2>
+      <p id="statusMessage" class="muted">Mira la pantalla principal y espera las instrucciones.</p>
+      <p id="roomSummary" class="room-summary"></p>
+    </section>
+
+    <section id="answerView" class="card hidden">
+      <p id="answerMode" class="step">Pregunta clasificatoria</p>
+      <h2>Selecciona una alternativa</h2>
+      <p class="muted">La primera pulsación válida queda registrada y no puede cambiarse.</p>
+      <div class="answer-grid" role="group" aria-label="Alternativas">
+        <button class="answer answer--a" data-answer="A"><span>A</span></button>
+        <button class="answer answer--b" data-answer="B"><span>B</span></button>
+        <button class="answer answer--c" data-answer="C"><span>C</span></button>
+        <button class="answer answer--d" data-answer="D"><span>D</span></button>
+      </div>
+      <div class="timer-line">
+        <div id="timerBar" class="timer-line__bar"></div>
+      </div>
+      <p id="answerStatus" class="answer-status">Esperando tu respuesta</p>
+    </section>
+
+    <section id="closedView" class="card hidden" aria-live="polite">
+      <div class="check" aria-hidden="true">✓</div>
+      <h2 id="closedTitle">Respuesta recibida</h2>
+      <p id="closedMessage" class="muted">Tu alternativa quedó registrada. Espera el resultado en la pantalla principal.</p>
+      <strong id="chosenAnswer" class="chosen"></strong>
+    </section>
+
+    <footer>
+      Pulsador local reutilizable · No utiliza Internet
+    </footer>
+  </main>
+  <script src="/mobile/app.js?v=3.1.4" defer></script>
+</body>
+</html>
