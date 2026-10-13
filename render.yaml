@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: desafio-millonario
+    runtime: python
+    plan: free
+    branch: v4-online
+    autoDeployTrigger: commit
+    buildCommand: pip install -r online/requirements.txt
+    startCommand: uvicorn desafio_online.app:app --app-dir online/src --host 0.0.0.0 --port $PORT --workers 1
+    healthCheckPath: /health
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: MAX_PARTICIPANTS
+        value: 30
