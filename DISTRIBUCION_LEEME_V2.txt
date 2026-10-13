@@ -1,0 +1,18 @@
+MILLONARIO EDUCATIVO — V2
+
+1. Mantenga todos los archivos dentro de esta carpeta.
+2. Abra MillonarioEducativo.exe.
+3. Use Iniciar juego para comenzar una ronda de cuatro preguntas.
+4. Use Editar preguntas para elegir entre el administrador manual y la
+   importación desde Excel.
+5. La plantilla válida está en templates\Banco_preguntas_V2.xlsx.
+6. Cierre la aplicación antes de retirar el pendrive.
+
+Las preguntas se guardan en projects\demo.juego. La aplicación crea respaldos
+automáticos en la misma carpeta y guarda un historial para reducir repeticiones
+entre rondas.
+
+Para guardar cambios, el pendrive o la carpeta deben permitir escritura.
+No copie solamente el archivo EXE: necesita los demás archivos de esta carpeta.
+
+Esta aplicación está destinada a uso privado y educativo.
