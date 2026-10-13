@@ -1,0 +1,14 @@
+MILLONARIO EDUCATIVO — V1
+
+1. Mantenga todos los archivos dentro de esta carpeta.
+2. Abra MillonarioEducativo.exe.
+3. Use Iniciar juego o Editar preguntas desde el menú.
+4. Cierre la aplicación antes de retirar el pendrive.
+
+Las preguntas se guardan en projects\demo.juego. La aplicación crea respaldos
+automáticos en la misma carpeta.
+
+Para guardar cambios, el pendrive o la carpeta deben permitir escritura.
+No copie solamente el archivo EXE: necesita los demás archivos de esta carpeta.
+
+Esta aplicación está destinada a uso privado y educativo.
