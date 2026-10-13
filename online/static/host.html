@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07113d">
+  <title>Sala · Desafío Millonario</title>
+  <link rel="stylesheet" href="/assets/styles.css?r=20260817-3">
+  <link rel="stylesheet" href="/assets/phase2.css?r=20260818-1">
+  <link rel="stylesheet" href="/assets/phase3.css?r=20260818-1">
+</head>
+<body class="host-body">
+  <main class="page-shell host-page-shell">
+    <header class="topbar host-topbar">
+      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">✦</span><span class="brand-copy"><strong>DESAFÍO MILLONARIO</strong><span>Panel del moderador</span></span></a>
+      <div class="topbar-actions">
+        <button id="fullscreenButton" class="button ghost compact" type="button">Pantalla completa</button>
+        <button id="logoutButton" class="button ghost compact" type="button">Cerrar sesión</button>
+      </div>
+    </header>
+
+    <section id="hostLayout" class="host-layout lobby-layout">
+      <aside id="roomPanel" class="room-panel classic-room-panel">
+        <p class="room-label">Sala de enrolamiento</p>
+        <h1 id="roomCode" class="room-code">······</h1>
+
+        <div class="qr-frame classic-qr-frame">
+          <img id="roomQr" alt="Código QR para ingresar a la sala">
+        </div>
+
+        <span id="roomStatus" class="status-pill">Sala abierta</span>
+
+        <div class="connected-counter" aria-live="polite">
+          <span>Conectados</span>
+          <strong><span id="lobbyConnectedCount">0</span><small> / 30</small></strong>
+        </div>
+
+        <fieldset class="question-count-selector" aria-describedby="questionCountHelp">
+          <legend>Preguntas por jugador</legend>
+          <div class="question-count-options">
+            <button class="question-count-option" type="button" data-questions="1" aria-pressed="false">1</button>
+            <button class="question-count-option" type="button" data-questions="3" aria-pressed="false">3</button>
+            <button class="question-count-option selected" type="button" data-questions="5" aria-pressed="true">5</button>
+          </div>
+          <small id="questionCountHelp">Modo seleccionado: 5 preguntas por jugador.</small>
+        </fieldset>
+
+        <button id="lobbyStartButton" class="classic-start-button" type="button" disabled>
+          Cerrar sala e iniciar clasificación
+        </button>
+        <p id="roomMessage" class="fine-print room-message" role="status"></p>
+      </aside>
+
+      <div class="host-main">
+        <div id="metricGrid" class="metric-grid" aria-label="Estado de la experiencia">
+          <div class="metric"><span>Inscritos</span><strong id="enrolledMetric">0</strong></div>
+          <div class="metric"><span>Conectados</span><strong id="connectedMetric">0</strong></div>
+          <div class="metric"><span id="thirdMetricLabel">Respuestas</span><strong id="answersMetric">0</strong></div>
+        </div>
+
+        <section id="stageCard" class="card question-card" aria-live="polite">
+          <div id="hostTimer" class="host-timer hidden" aria-label="Tiempo restante"><strong id="hostTimerValue">30</strong><span>seg</span></div>
+          <div id="stageContent" class="stage-content"></div>
+          <div id="stageControls" class="control-row"></div>
+        </section>
+
+        <p id="hostError" class="error host-error-banner" role="alert"></p>
+
+        <section id="participantsCard" class="card participants lobby-participants-stage">
+          <div class="participants-stage-heading">
+            <div>
+              <p class="eyebrow">Participantes</p>
+              <h2>Personas en la sala</h2>
+            </div>
+            <p class="participants-stage-note">Los participantes aparecerán aquí a medida que escaneen el QR.</p>
+          </div>
+          <div id="participantList" class="participant-list"><p class="muted">Aún no hay participantes.</p></div>
+        </section>
+      </div>
+    </section>
+  </main>
+  <script src="/assets/sound.js?r=20260818-5" defer></script>
+  <script src="/assets/host.js?r=20260818-3" defer></script>
+  <script src="/assets/phase4_audio.js?r=20260818-1" defer></script>
+  <script src="/assets/phase6_settings.js?r=20260818-1" defer></script>
+</body>
+</html>
