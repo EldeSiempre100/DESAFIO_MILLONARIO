@@ -1,0 +1,204 @@
+/* Fase 1 — Home, acceso de moderador y menú canónico V2/V3.
+   Este archivo complementa styles.css sin alterar todavía las escenas de juego. */
+
+.moderator-entry {
+  text-decoration: none;
+  min-width: 126px;
+  justify-content: center;
+}
+
+.participation-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.participation-card::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  right: -88px;
+  bottom: -105px;
+  border: 34px solid rgba(84, 220, 232, .07);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.participation-symbol {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 24px;
+  border: 2px solid var(--cyan);
+  border-radius: 20px;
+  color: var(--cyan);
+  background: rgba(3, 12, 45, .52);
+  box-shadow: 0 0 28px rgba(84, 220, 232, .12);
+  font-size: 42px;
+  line-height: 1;
+}
+
+.participation-note {
+  margin: 24px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: #e5e8ff;
+  line-height: 1.55;
+  font-size: 14px;
+}
+
+.moderator-stage {
+  min-height: calc(100vh - 150px);
+  display: grid;
+  place-items: center;
+}
+
+.moderator-menu-panel {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 1040px);
+  min-height: min(690px, calc(100vh - 170px));
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(215, 216, 224, .36);
+  border-radius: 30px;
+  background:
+    linear-gradient(to bottom, rgba(3, 6, 29, .08), rgba(3, 6, 29, .28)),
+    url('/media/images/menu_background_v2.png') center / cover no-repeat,
+    #070824;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, .42);
+}
+
+.moderator-menu-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top, rgba(4, 5, 31, .68) 0%, transparent 48%);
+}
+
+.moderator-menu-content {
+  width: min(720px, calc(100% - 40px));
+  display: grid;
+  justify-items: center;
+  gap: 15px;
+  padding: 0 0 clamp(44px, 7vh, 76px);
+  text-align: center;
+}
+
+.moderator-menu-content h1 {
+  margin: 0 0 6px;
+  color: white;
+  font-size: clamp(29px, 4.2vw, 48px);
+  letter-spacing: .015em;
+  text-shadow: 0 3px 20px rgba(0, 0, 0, .75);
+}
+
+.moderator-menu-content .menu-subtitle {
+  margin: 0 0 8px;
+  color: #e9eaff;
+  font-size: 15px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .8);
+}
+
+.classic-menu-button {
+  width: min(620px, 100%);
+  min-height: 76px;
+  border: 3px solid var(--silver, #d7d8e0);
+  border-radius: 999px;
+  color: white;
+  background: rgba(29, 31, 111, .86);
+  box-shadow: inset 0 0 24px rgba(255, 255, 255, .035), 0 12px 34px rgba(0, 0, 0, .24);
+  font-size: clamp(20px, 3vw, 31px);
+  font-weight: 800;
+  cursor: pointer;
+  transition: border-color .16s ease, background .16s ease, transform .16s ease;
+}
+
+.classic-menu-button:hover:not(:disabled),
+.classic-menu-button:focus-visible:not(:disabled) {
+  border-color: var(--gold);
+  background: rgba(46, 48, 145, .94);
+  transform: translateY(-1px);
+}
+
+.classic-menu-button:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
+.menu-error {
+  min-height: 22px;
+  margin: 3px 0 0;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(3, 7, 32, .62);
+}
+
+.edit-choice-shade {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(2, 4, 24, .82);
+  backdrop-filter: blur(9px);
+}
+
+.edit-choice-panel {
+  width: min(620px, 100%);
+  padding: clamp(26px, 4vw, 42px);
+  border: 2px solid rgba(215, 216, 224, .72);
+  border-radius: 24px;
+  background: rgba(8, 15, 58, .96);
+  box-shadow: 0 28px 86px rgba(0, 0, 0, .5);
+  text-align: center;
+}
+
+.edit-choice-panel h2 {
+  margin-bottom: 8px;
+  font-size: clamp(25px, 4vw, 36px);
+}
+
+.edit-choice-actions {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.edit-choice-actions .classic-menu-button {
+  min-height: 62px;
+  font-size: clamp(18px, 2.5vw, 25px);
+}
+
+.edit-choice-close {
+  margin-top: 22px;
+}
+
+@media (max-width: 760px) {
+  .moderator-entry {
+    min-width: 0;
+  }
+
+  .moderator-stage {
+    min-height: calc(100vh - 135px);
+  }
+
+  .moderator-menu-panel {
+    min-height: 620px;
+    background-position: center top;
+  }
+
+  .moderator-menu-content {
+    padding-bottom: 36px;
+  }
+
+  .classic-menu-button {
+    min-height: 68px;
+    border-width: 2px;
+  }
+}
