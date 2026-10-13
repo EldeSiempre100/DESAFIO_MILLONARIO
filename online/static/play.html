@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#06111e">
+  <title>Pulsador interactivo · Desafío Millonario</title>
+  <link rel="stylesheet" href="/assets/styles.css?r=20260817-3">
+  <link rel="stylesheet" href="/assets/phase5_mobile.css?r=20260818-1">
+</head>
+<body class="player-body player-pulsador-body">
+  <main class="play-shell pulsador-shell">
+    <header class="pulsador-header">
+      <div class="pulsador-mark" aria-hidden="true">↯</div>
+      <div class="pulsador-heading">
+        <p>SALA PARTICIPATIVA</p>
+        <h1>Pulsador interactivo</h1>
+      </div>
+      <span id="networkIndicator" class="network-indicator">Sin conexión</span>
+    </header>
+
+    <section class="card play-card pulsador-card">
+      <p id="playerRoomCode" class="play-room pulsador-room">SALA <span id="roomCode">······</span></p>
+
+      <div id="joinView" class="pulsador-join-view">
+        <h2>Prepara tu pulsador</h2>
+        <p id="roomAvailability" class="muted">Comprobando la sala…</p>
+        <form id="joinForm" class="form-stack hidden" autocomplete="off">
+          <fieldset class="pulsador-avatar-fieldset">
+            <legend>Elige tu avatar</legend>
+            <div id="avatarGrid" class="avatar-grid"></div>
+          </fieldset>
+          <label for="alias">Tu alias
+            <input id="alias" maxlength="24" minlength="2" autocomplete="nickname" placeholder="Ej.: Camila" required>
+          </label>
+          <button id="joinButton" class="button pulsador-primary" type="submit">Ingresar a la sala</button>
+          <p id="joinError" class="error" role="alert"></p>
+        </form>
+      </div>
+
+      <div id="gameView" class="hidden">
+        <div class="identity-row pulsador-identity">
+          <span id="identityAvatar" class="identity-avatar"></span>
+          <div class="pulsador-identity-copy">
+            <strong id="identityAlias"></strong>
+            <span id="identityRole">Listo para jugar</span>
+          </div>
+        </div>
+
+        <div id="waitingView" class="waiting pulsador-waiting" aria-live="polite">
+          <div>
+            <div class="pulsador-waiting-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+            <h2 id="waitingTitle">Estás dentro</h2>
+            <p id="waitingMessage" class="muted">Mira la pantalla principal y espera las instrucciones.</p>
+          </div>
+        </div>
+
+        <div id="questionView" class="play-question pulsador-question hidden">
+          <p class="pulsador-step">Selecciona una alternativa</p>
+          <p class="muted pulsador-answer-help">La primera pulsación válida queda registrada y no puede cambiarse.</p>
+          <div id="answerGrid" class="answer-grid" aria-label="Pulsador de respuestas A a D"></div>
+          <div class="timer-row pulsador-timer-row" aria-label="Tiempo restante">
+            <div class="timer"><div id="timerFill" class="timer-fill"></div></div>
+            <strong id="timerValue" class="timer-value">30</strong>
+          </div>
+          <p id="answerStatus" class="fine-print pulsador-answer-status" role="status">Esperando tu respuesta.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pulsador-footer">Mira la pantalla principal · Este dispositivo permanece en silencio</footer>
+  </main>
+  <script src="/assets/play.js?r=20260818-5" defer></script>
+</body>
+</html>
